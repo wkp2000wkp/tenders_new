@@ -1,0 +1,172 @@
+#header {
+	width: 100%;
+	min-width: 980px;
+	height: 62px;
+	background: url(../images/bg_header.gif);
+	overflow: hidden;
+}
+
+#header a {
+	color: #FFFFFF;
+}
+
+h1 {
+	float: left;
+	height: 62px;
+	width: 370px;
+	overflow: hidden;
+}
+
+h1 a {
+	display: block;
+	margin: 15px 0 0 40px;
+	padding-top: 36px;
+	width: 320px;
+	height: 0;
+	overflow: hidden;
+}
+
+.head_right {
+	float: right;
+	width: 610px;
+	height: 62px;
+	background-position: right -62px;
+}
+
+.uinfo {
+	float: right;
+	margin: 32px 23px 0 0;
+	font-size: 14px;
+	font-weight: 800;
+}
+
+.search {
+	float: left;
+}
+
+.search ul {
+	float: left;
+	position: relative;
+	width: 230px;
+	height: 29px;
+	overflow: hidden;
+}
+
+.search li {
+	float: left;
+	padding: 0 11px 0 13px;
+	margin-right: -1px;
+	height: 29px;
+	line-height: 31px;
+	background: url(http://i3.dukuai.com/ui/sns/manage/images/bg_line.gif)
+		no-repeat right -8px;
+	overflow: hidden;
+}
+
+.search li span {
+	display: block;
+	cursor: pointer;
+}
+
+.search li.current span {
+	font-weight: 800;
+	background: url(http://i3.dukuai.com/ui/sns/manage/images/trigon.gif)
+		no-repeat 50% 23px;
+}
+
+.search label {
+	float: left;
+}
+
+.search input {
+	margin: 2px 0 0 2px;
+	*margin: 1px 0 0 2px;
+	height: 21px;
+	line-height: 21px;
+	width: 238px;
+	border: 0;
+}
+
+.search .sm {
+	margin: 4px 0 0 2px;
+}
+
+.search .sm input {
+	margin: 0;
+	width: 18px;
+	height: 18px;
+	border: none;
+	cursor: pointer;
+	background: none;
+}
+
+#left {
+	float: left;
+	padding-right: 4px;
+	width: 190px;
+	background: #e4ddb7 url(..images/bg_left.gif) repeat-y 180px 0;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+#left h2,#left h3,#left h4,#left li {
+	overflow: hidden;
+}
+
+#left h2 {
+	width: 180px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	border-bottom: 1px solid #430d09;
+	font-family: Arial;
+	font-size: 16px;
+	color: #3F6103
+}
+
+#left .main {
+	padding-left: 15px;
+	width: 165px;
+	border-top: 1px solid #FFFFFF;
+}
+
+#left h3 {
+	margin-top: 15px;
+	height: 21px;
+	line-height: 21px;
+	width: 100%;
+	font-size: 16px;
+}
+
+#left h4 {
+	margin-top: 4px;
+	height: 25px;
+	line-height: 25px;
+	text-indent: 20px;
+	font-size: 14px;
+	color: #430d09;
+	background: url(../images/bg_left.gif) no-repeat -24px 6px;
+}
+
+#left h4.current {
+	background-position: -24px -25px;
+}
+
+#left ul {
+	display: none;
+	padding-left: 20px;
+	width: 145px;
+}
+
+#left li {
+	height: 23px;
+	line-height: 23px;
+	text-indent: 15px;
+	font-size: 14px;
+	background: url(../images/bg_left.gif) no-repeat -24px -58px;
+}
+
+#left li.current a {
+	font-weight: 800;
+	color: #FB6D01
+}

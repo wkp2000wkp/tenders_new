@@ -1,0 +1,282 @@
+/* 全局CSS定义 */
+body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,lable,textarea,select,p,blockquote,button,tr,td,th,thead
+	{
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	border: none;
+}
+
+ol,ul,li {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+label,input {
+	vertical-align: middle;
+}
+
+body {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #330000;
+}
+
+a {
+	text-decoration: none;
+	color: #330000;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.txt input,.atxt textarea {
+	border: 1px solid #7E9EB7;
+}
+
+.txt input {
+	height: 21px;
+	line-height: 21px;
+}
+
+.alert,.alert a {
+	color: #FB0200
+}
+
+html {
+	_overflow-x: hidden;
+}
+
+/* 按钮 */
+.sumbit {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	margin-top: 20px;
+	height: 23px;
+	width: 108px;
+	border: 1px solid #330000;
+	overflow: hidden;
+}
+
+.sumbit input {
+	display: block;
+	width: 108px;
+	height: 23px;
+	line-height: 21px;
+	border-top: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+	border-right: 1px solid #6C6C6C;
+	border-bottom: 1px solid #6C6C6C;
+	font-size: 12px;
+	color: #FFFFFF;
+	font-size: 14px;
+	background: #8f4a20;
+	cursor: pointer;
+}
+
+/* 分页 */
+.pages {
+	float: right
+}
+
+.pages a,.pages span {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	padding: 0px 6px;
+	height: 21px;
+	line-height: 21px;
+	font-size: 12px;
+	font-weight: 100;
+	overflow: hidden;
+}
+
+.pages a {
+	border: 1px solid #330000;
+	background: #fffcef;
+}
+
+.pages span {
+	border: 1px solid #bb4917;
+	background: #FFFFFF;
+	color: #bb4917;
+}
+
+.result caption .caption {
+	padding: 0;
+	height: 23px;
+	line-height: 23px;
+	border-bottom: 1px solid #9b5523;
+	text-align: left;
+	font-size: 14px;
+	font-weight: 800;
+}
+
+.result thead th {
+	padding: 0;
+	height: 27px;
+	line-height: 27px;
+	border-bottom: 1px dashed #D7DFEC;
+	text-align: center;
+	font-size: 12px;
+	font-weight: 800;
+	color: #330000;
+	background: #f9da9f;
+}
+
+.result tbody td,.result tbody th {
+	padding: 10px 0;
+}
+
+.result tbody td {
+	border-bottom: 1px solid #E5E5E5;
+	font-size: 12px;
+}
+
+.result a {
+	font-weight: 800;
+	color: #330000;
+}
+
+.result .alert {
+	color: #FB0200;
+}
+
+#right {
+	overflow: hidden;
+}
+
+.position {
+	height: 46px;
+	line-height: 46px;
+	border-bottom: 1px solid #975222;
+	font-size: 14px;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.position span {
+	padding: 0 5px;
+	color: #330000;
+	font-weight: normal;
+}
+
+#right .main {
+	float: left;
+	width: 95%;
+	overflow: hidden;
+}
+
+.main table {
+	width: 100%;
+}
+
+.main th,.main td {
+	padding: 8px 0;
+	font-size: 14px;
+	font-weight: 100;
+}
+
+.main th {
+	color: #666666;
+}
+
+.m_search,.m_result {
+	margin-top: 20px;
+	width: 780px;
+}
+
+.m_search th {
+	padding-right: 5px;
+	width: 75px;
+	text-align: right;
+}
+
+.m_search tbody th,.m_search tbody td {
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.m_search td {
+	font-size: 12px;
+}
+
+.m_search td span {
+	margin-left: 20px;
+	font-size: 14px;
+	color: #666666;
+}
+
+.m_search td .sumbit {
+	margin: 10px 0 0 0px;
+	width: 90px;
+}
+
+.m_search td .sumbit input {
+	width: 90px;
+}
+
+.m_search .txt input {
+	width: 140px;
+}
+
+.m_search .atxt textarea {
+	width: 300px;
+	height: 80px;
+}
+
+.m_result td strong {
+	color: #330000;
+}
+
+#upload {
+	width: 450px;
+	display: none;
+	height: 300px;
+	border: 1px solid #993300;
+	background: #f8f7f5;
+	bottom: 150px;
+}
+
+#upload h3 {
+	font-size: 18px;
+	margin-top: 15px;
+	text-align: center;
+	width: 400px;
+	float: left;
+}
+
+#upload a {
+	font-size: 12px;
+	margin-top: 15px;
+	text-align: center;
+	width: 48px;
+	height: 21px;
+	float: right;
+}
+
+#upload ul {
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+#upload ul li {
+	padding-top: 10px;
+}
+
+#upload ul img {
+	float: right;
+	margin-right: 30px;
+	padding-top: 40px
+}
+
+#upload span {
+	display: block;
+	margin: 20px auto
+}

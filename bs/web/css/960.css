@@ -1,0 +1,34 @@
+
+.container_12{
+	margin-left: auto;
+	margin-right: auto;
+	width: 2240px;
+}
+
+.grid_8
+{
+	display: inline;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+
+
+.container_12 .grid_8 {
+	width: 2240px;
+}
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+* html .clearfix,
+*:first-child+html .clearfix {
+	zoom: 1;
+}

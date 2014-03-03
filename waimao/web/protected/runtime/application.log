@@ -1,0 +1,6 @@
+2010/01/21 08:33:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site".' in D:\wamp\www\development\SBS-lib\yii-trunk\framework\web\CWebApplication.php:324
+Stack trace:
+#0 D:\wamp\www\development\SBS-lib\yii-trunk\framework\web\CWebApplication.php(120): CWebApplication->runController('')
+#1 D:\wamp\www\development\SBS-lib\yii-trunk\framework\base\CApplication.php(147): CWebApplication->processRequest()
+#2 D:\wamp\www\development\SBS-apps\structured-trunk\web\index.php(24): CApplication->run()
+#3 {main} REQUEST_URI=/structured/

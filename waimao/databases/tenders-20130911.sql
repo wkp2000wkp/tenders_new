@@ -1,0 +1,1 @@
+ALTER TABLE tenders.san_quote_kaibiao_result ADD `ji_zhun_price` double NOT NULL  AFTER `xiafu` ;

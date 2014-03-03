@@ -1,0 +1,1 @@
+ALTER TABLE `tenders`.`san_zhaobiao` CHANGE COLUMN `bid_fee_value` `bid_fee_value` TEXT NOT NULL;

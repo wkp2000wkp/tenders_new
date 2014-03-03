@@ -1,0 +1,272 @@
+P {
+	MARGIN: 0px
+}
+
+BODY {
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 150%;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+	MARGIN: 0px;
+	COLOR: #000;
+	BACKGROUND-COLOR: #fff;
+}
+
+TABLE {
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 150%;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+INPUT {
+	FONT-SIZE: 12px;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+SELECT {
+	FONT-SIZE: 12px;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+TEXTAREA {
+	FONT-SIZE: 12px;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+a{
+	font-family:"Verdana","Arial","Helvetica","sans-serif";
+	padding-bottom: 0.4em;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: 0.4em;
+	position:relative;
+}
+A:link {
+	COLOR: #036;
+	TEXT-DECORATION: none
+}
+
+A:visited {
+	COLOR: #036;
+	TEXT-DECORATION: none
+}
+
+A:hover {
+	COLOR: #f60;
+	TEXT-DECORATION: underline
+}
+
+A.menuChild:link {
+	COLOR: #036;
+	TEXT-DECORATION: none
+}
+
+A.menuChild:visited {
+	COLOR: #036;
+	TEXT-DECORATION: none
+}
+
+A.menuChild:hover {
+	COLOR: #f60;
+	TEXT-DECORATION: underline
+}
+
+A.menuParent:link {
+	COLOR: #000;
+	TEXT-DECORATION: none
+}
+
+A.menuParent:visited {
+	COLOR: #000;
+	TEXT-DECORATION: none
+}
+
+A.menuParent:hover {
+	COLOR: #f60;
+	TEXT-DECORATION: none
+}
+
+TABLE.position {
+	WIDTH: 100%
+}
+
+TR.position {
+	HEIGHT: 25px;
+	BACKGROUND-COLOR: #f4f7fc
+}
+
+TD.position {
+	BORDER-RIGHT: #adceff 1px solid;
+	PADDING-LEFT: 20px;
+	BORDER-BOTTOM: #adceff 1px solid
+}
+
+TABLE.listTable {
+	WIDTH: 98%;
+	BACKGROUND-COLOR: #b1ceee
+}
+
+TR.listHeaderTr {
+	FONT-WEIGHT: bold;
+	HEIGHT: 25px;
+	BACKGROUND-COLOR: #ebf4fd;
+	TEXT-ALIGN: center
+}
+
+TR.listTr {
+	HEIGHT: 25px;
+	BACKGROUND-COLOR: #fff;
+	TEXT-ALIGN: center
+}
+
+TR.listAlternatingTr {
+	HEIGHT: 25px;
+	BACKGROUND-COLOR: #fffdf0;
+	TEXT-ALIGN: center
+}
+
+TR.listFooterTr {
+	HEIGHT: 30px;
+	BACKGROUND-COLOR: #ebf4fd;
+	TEXT-ALIGN: center
+}
+
+TABLE.editTable {
+	WIDTH: 98%;
+	BACKGROUND-COLOR: #b1ceee
+}
+TR.editHeaderTr {
+	HEIGHT: 25px;
+	BACKGROUND-COLOR: #ebf4fd
+}
+
+TD.editHeaderTd {
+	PADDING-LEFT: 50px;
+	FONT-WEIGHT: bold
+}
+
+TR.editTr {
+	HEIGHT: 30px
+}
+
+TD.editLeftTd {
+	WIDTH: 150px;
+	BACKGROUND-COLOR: #fffdf0;
+	TEXT-ALIGN: center
+}
+
+TD.editRightTd {
+	PADDING-LEFT: 10px;
+	BACKGROUND-COLOR: #fff
+}
+
+TR.editFooterTr {
+	HEIGHT: 40px;
+	BACKGROUND-COLOR: #ebf4fd
+}
+
+TD.editFooterTd {
+	PADDING-LEFT: 150px
+}
+
+
+TD.td_css_project_name {
+	WIDTH: 250px;
+}
+TD.td_css_bidding_agent ,.td_css_tenderer  {
+	WIDTH: 210px;
+}
+TD.td_css_specification {
+	WIDTH: 150px;
+}
+TD.td_css_number ,.td_css_respective_regions ,.td_css_respective_provinces,.td_css_tender_fee ,.td_css_san_bid_price  {
+	WIDTH: 60px;
+}
+TD.td_css_bid,.td_css_feedback,.td_css_reimbursement{
+	WIDTH: 30px;
+}
+
+TD.td_css_slesman ,.td_css_tender_manager,.td_css_transformer_type  {
+	WIDTH: 60px;
+}
+TD.td_css_end_time,.td_css_manufacturers,.td_css_bid_bond,.td_css_bid_fee,.td_css_place_fee,.td_css_skill_fee {
+	WIDTH: 80px;
+}
+TD.td_css_id,.td_css_tb_show_id {
+	WIDTH: 30px;
+}
+TD.td_css_san_bid_all_price {
+	WIDTH: 85px;
+}
+TD.td_css_remark{
+	WIDTH: 200px;
+}
+TD.css_td_operation{
+	WIDTH: 60px;
+}
+TH.td_css_project_name {
+	WIDTH: 233px;
+}
+TH.td_css_bidding_agent ,.td_css_tenderer  {
+	WIDTH: 210px;
+}
+TH.td_css_specification {
+	WIDTH: 150px;
+}
+TH.td_css_bid,.td_css_feedback,.td_css_reimbursement{
+	WIDTH: 30px;
+}
+TH.td_css_number ,.td_css_respective_regions ,.td_css_respective_provinces,.td_css_tender_fee ,.td_css_san_bid_price  {
+	WIDTH: 60px;
+}
+
+TH.td_css_slesman ,.td_css_tender_manager,.td_css_transformer_type  {
+	WIDTH: 60px;
+}
+TH.td_css_end_time,.td_css_manufacturers,.td_css_bid_bond,.td_css_bid_fee,.td_css_place_fee,.td_css_skill_fee {
+	WIDTH: 80px;
+}
+TH.td_css_id {
+	WIDTH: 37px;
+}
+TH.td_css_san_bid_all_price {
+	WIDTH: 60px;
+}
+TH.td_css_remark{
+	WIDTH: 200px;
+}
+table.tou_biao_list_table{
+	WIDTH: 2270px;
+	height:100px;
+}
+table.tou_biao_list_table1{
+	WIDTH: 2240px;
+	height: 20px;
+	position: absolute;
+	z-index : 1;
+	left : 20px;
+	top : 120px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+table.zhaobiao_biao_list_table{
+	WIDTH: 1840px;
+}
+
+#addNewRow_tgTable td,th{
+	text-align: left;
+}
+#addNewRow_tgTable th{
+	width: 25%;
+}
+
+#addNewRow_tgTable input{
+	width: 300px;
+}
+#addNewRow_tgTable textarea{
+	width: 300px;
+	height: 60px;
+}
+#addNewRow_tgTable input.button_css{
+	width: 50px;
+}
+
