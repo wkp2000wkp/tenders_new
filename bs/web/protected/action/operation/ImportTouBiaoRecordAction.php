@@ -127,6 +127,7 @@ class ImportTouBiaoRecordAction extends APPBaseAction
 					'respective_provinces'=>'respective_provinces',
 					'tender_fee'=>'tender_fee',
 					'bid_bond'=>'bid_bond',
+					'bid_valid'=>'bid_valid',
     				'creat_at'=>$time,
 					'update_at'=>$time,
 					'is_deleted'=>'is_deleted',

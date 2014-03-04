@@ -78,6 +78,11 @@
 				value="<?php echo $data['bid_bond'];?>" name="data[bid_bond]"></td>
 		</tr>
 		<tr>
+			<th>投标有效期(天)</th>
+			<td class="editable"><span></span> <input type="text"
+				value="<?php echo $data['bid_valid'];?>" name="data[bid_valid]"></td>
+		</tr>
+		<tr>
 			<th class="sortable"><span>是否中标</span> </th>
 			<td class="editable"><select name="data[bid]">
 			    <?php foreach(SelectConstent::getSelectBid() as $option):?>
@@ -154,7 +159,7 @@
 				<?php if(!$data['skill_fee']):?>
 				<option value=''>请选择</option>
 				<?php endif;?>
-				<?php foreach(SelectConstent::getSelectPlaceFee() as $option):?>
+				<?php foreach(SelectConstent::getSelectSkillFee() as $option):?>
 				<option value="<?php echo $option;?>" <?php if ($option==$data['skill_fee']) echo 'selected';?>><?php echo $option;?></option>
 				<?php endforeach;?>
 			</select><span style='color:red;'>*</span></td>
@@ -211,6 +216,13 @@ function checkSubmit(){
 		return false;
 	}else{
 		$("input[name='data[tender_manager]']").next().html('');
+	}
+
+	if($("input[name='data[respective_provinces]']").val().length == 0){
+		$("input[name='data[respective_provinces]']").next().html('必填项！');
+		return false;
+	}else{
+		$("input[name='data[respective_provinces]']").next().html('');
 	}
 	if($("input[name='data[tender_fee]']").val().length == 0){
 		$("input[name='data[tender_fee]']").next().html('必填项！');

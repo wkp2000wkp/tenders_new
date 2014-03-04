@@ -127,13 +127,19 @@ class ImportTouBiaoRecordAction extends APPBaseAction
 					'respective_provinces'=>'respective_provinces',
 					'tender_fee'=>'tender_fee',
 					'bid_bond'=>'bid_bond',
+    			//投标有效期(天)\币种\其他币种
+					'currency'=>'currency',
+					'other_currency'=>'other_currency',
+					'bid_valid'=>'bid_valid',
     				'creat_at'=>$time,
 					'update_at'=>$time,
 					'is_deleted'=>'is_deleted',
 					'skill_fee'=>'skill_fee',
 					'place_fee'=>'place_fee',
 					'bid_fee'=>'bid_fee',
-					'bid_fee_value'=>'bid_fee_value'
+					'bid_fee_value'=>'bid_fee_value',
+					'bid_fee_sort'=>'bid_fee_sort',
+					'bid_fee_sort_other'=>'bid_fee_sort_other',
     			);
     }
     

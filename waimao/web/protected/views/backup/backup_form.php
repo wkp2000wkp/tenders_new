@@ -66,20 +66,40 @@
 			</td>
 		</tr>
 		<tr>
-			<th>所属省份</th>
+			<th>所属国家</th>
 			<td class="editable"><span></span> <input type="text"
 				value="<?php echo $data['respective_provinces'];?>" name="data[respective_provinces]"></td>
 		</tr>
 		<tr>
-			<th class="sortable"><span>标书费(元)</span> </th>
+			<th class="sortable"><span>标书费(多币种)</span> </th>
 			<td class="editable td_css_tender_fee"><input
 				 value="<?php echo $data['tender_fee'];?>"  type="text" name="data[tender_fee]"><span style='color:red;'>*</span></td>
 		</tr>
 		<tr>
-			<th class="sortable"><span>投标保证金(万元)</span> </th>
+			<th class="sortable"><span>投标保证金(多币种)</span> </th>
 			<td class="editable td_css_bid_bond"><input type="text"
 				value="<?php echo $data['bid_bond'];?>" name="data[bid_bond]"></td>
 		</tr>
+		<tr>
+			<<th class="sortable"><span>币种</span> </th>
+			<td class="editable"><span></span>
+			<table ><tr><td><select id='data_currency' 
+				name="data[currency]" style="margin-left: -5px;"> 
+				<?php if(!$data['currency']):?>
+				<option value=''>请选择</option>
+				<?php endif;?>
+				<?php foreach(SelectConstent::getSelectCurrency() as $option):?>
+				<option value="<?php echo $option;?>" <?php if ($option==$data['currency']) echo 'selected';?>><?php echo $option;?></option>
+				<?php endforeach;?>
+			</select><span style='color:red;'>*</span><input type="text" value="<?php echo $data['other_currency'];?>" name="data[other_currency]" ><span style='color:red;'></span></td></tr></table>
+			</td>
+		</tr>
+		<tr>
+			<th class="sortable"><span>投标有效期(天)</span> </th>
+			<td class="editable td_css_bid_valid"><input type="text"
+				value="<?php echo $data['bid_valid'];?>" name="data[bid_valid]"></td>
+		</tr>
+		
 		<tr>
 			<th class="sortable"><span>是否中标</span> </th>
 			<td class="editable"><select name="data[bid]">

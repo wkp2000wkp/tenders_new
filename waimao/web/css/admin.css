@@ -187,7 +187,7 @@ TD.td_css_bid,.td_css_feedback,.td_css_reimbursement{
 TD.td_css_slesman ,.td_css_tender_manager,.td_css_transformer_type  {
 	WIDTH: 60px;
 }
-TD.td_css_end_time,.td_css_manufacturers,.td_css_bid_bond,.td_css_bid_fee,.td_css_place_fee,.td_css_skill_fee {
+TD.td_css_end_time,.td_css_manufacturers,.td_css_bid_bond,.td_css_bid_valid,.td_css_bid_valid,.td_css_bid_fee,.td_css_bid_fee_sort_other,.td_css_bid_fee_sort,.td_css_place_fee,.td_css_skill_fee {
 	WIDTH: 80px;
 }
 TD.td_css_id,.td_css_tb_show_id {
@@ -221,7 +221,7 @@ TH.td_css_number ,.td_css_respective_regions ,.td_css_respective_provinces,.td_c
 TH.td_css_slesman ,.td_css_tender_manager,.td_css_transformer_type  {
 	WIDTH: 60px;
 }
-TH.td_css_end_time,.td_css_manufacturers,.td_css_bid_bond,.td_css_bid_fee,.td_css_place_fee,.td_css_skill_fee {
+TH.td_css_end_time,.td_css_manufacturers,.td_css_bid_bond,.td_css_bid_valid,.td_css_bid_valid,.td_css_bid_fee,.td_css_bid_fee_sort_other,.td_css_bid_fee_sort,.td_css_place_fee,.td_css_skill_fee {
 	WIDTH: 80px;
 }
 TH.td_css_id {
@@ -234,11 +234,11 @@ TH.td_css_remark{
 	WIDTH: 200px;
 }
 table.tou_biao_list_table{
-	WIDTH: 2270px;
+	WIDTH: 2350px;
 	height:100px;
 }
 table.tou_biao_list_table1{
-	WIDTH: 2240px;
+	WIDTH: 2320px;
 	height: 20px;
 	position: absolute;
 	z-index : 1;
@@ -249,7 +249,7 @@ table.tou_biao_list_table1{
 	padding-bottom: 0px;
 }
 table.zhaobiao_biao_list_table{
-	WIDTH: 1840px;
+	WIDTH: 1920px;
 }
 
 #addNewRow_tgTable td,th{

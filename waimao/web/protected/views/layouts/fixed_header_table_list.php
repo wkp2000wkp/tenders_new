@@ -28,6 +28,10 @@
         		        	<?php echo nl2br($list['bid_fee_value']).'%'; ?>
         		        <?php elseif($c_key=='bid_fee' && $list[$c_key] == SelectConstent::BID_FEE_QITA):?>
         		        	<?php echo nl2br($list['bid_fee_value']); ?>
+        		        <?php elseif($c_key=='currency' && $list[$c_key] == SelectConstent::BID_FEE_QITA):?>
+        		        	<?php echo nl2br($list['other_currency']); ?>
+        		        <?php elseif($c_key=='bid_fee_sort' && $list[$c_key] == SelectConstent::BID_FEE_QITA):?>
+        		        	<?php echo nl2br($list['bid_fee_sort_other']); ?>
         		        <?php else:?>
         		        	<?php echo nl2br($list[$c_key]); ?>
         		        <?php endif;?>

@@ -42,6 +42,8 @@ class ExportBidOpeningRecordAction extends APPBaseAction
     public function getData($tableName,$headers,$whereData,$sort='',$dateArea=0){
     	$headersAry=array_keys($headers);
     	$headersAry[]='bid_fee_value';
+    	$headersAry[]='bid_fee_sort_other';
+    	$headersAry[]='other_currency';
 		$sql = $this->getSqlSelect($tableName,$headersAry,$whereData);
 		if($dateArea){
 			$sql .= " and kaibiao_number > 0 ";

@@ -110,7 +110,7 @@ class ExportTongJiZhongBiaoKaiBiaoRecordAction extends BaseTongJiListAction
 		where
 		b.kb_r_id=a.id and a.tb_id=c.id  ";
 		$sql .= $this->getSqlSelectForWhere2($whereData);
-// 		排序：编号、区域、省份、类型、中标厂家排序
+// 		排序：编号、区域、国家、类型、中标厂家排序
 		$sql .= " order by ".$sort.";";
 		$dateList = $this->fetchArray($sql);
 		return $dateList;

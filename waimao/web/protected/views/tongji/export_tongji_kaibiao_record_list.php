@@ -4,7 +4,7 @@
 <tr bgcolor='bule'>
 <td>编号</td>
 <td>区域</td>
-<td>省份</td>
+<td>国家</td>
 <td>项目简称</td>
 <td>招标人</td>
 <td>业务员</td>

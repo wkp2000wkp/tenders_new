@@ -74,22 +74,42 @@
 				</td>
 		</tr>
 		<tr>
-			<th>所属省份</th>
+			<th>所属国家</th>
 			<td class="editable"><span></span> <input type="text"
 				value="<?php echo $data['respective_provinces'];?>" name="data[respective_provinces]"><span style='color:red;'>*</span></td>
 		</tr>
 		<tr>
-			<th>标书费(元)</th>
+			<th>标书费(多币种)</th>
 			<td class="editable"><span></span> <input type="text"
 				value="<?php echo $data['tender_fee'];?>" name="data[tender_fee]"><span style='color:red;'>*</span></td>
 		</tr>
 		<tr>
-			<th>投标保证金(万元)</th>
+			<th>投标保证金(多币种)</th>
 			<td class="editable"><span></span> <input type="text"
 				value="<?php echo $data['bid_bond'];?>" name="data[bid_bond]"></td>
 		</tr>
 		<tr>
-			<th>中标服务费(%)</th>
+			<th>币种</th>
+			<td class="editable"><span></span>
+			<table ><tr><td><select id='data_currency' 
+				name="data[currency]" style="margin-left: -5px;"> 
+				<?php if(!$data['currency']):?>
+				<option value=''>请选择</option>
+				<?php endif;?>
+				<?php foreach(SelectConstent::getSelectCurrency() as $option):?>
+				<option value="<?php echo $option;?>" <?php if ($option==$data['currency']) echo 'selected';?>><?php echo $option;?></option>
+				<?php endforeach;?>
+			</select><span style='color:red;'>*</span><input type="text" value="<?php echo $data['other_currency'];?>" name="data[other_currency]" ><span style='color:red;'></span></td></tr></table>
+			</td>
+		</tr>
+		<tr>
+			<th>投标有效期(天)</th>
+			<td class="editable"><span></span> <input type="text"
+				value="<?php echo $data['bid_valid'];?>" name="data[bid_valid]"></td>
+		</tr>
+		
+		<tr>
+			<th>代理费</th>
 			<td class="editable"><span></span>
 			<table ><tr><td><select id='data_bid_fee' 
 				name="data[bid_fee]" style="margin-left: -5px;"> 
@@ -103,31 +123,25 @@
 			</td>
 		</tr>
 		<tr>
-			<th>就位费</th>
-			<td class="editable"><span></span> 
-			
-			<select id='data_place_fee' 
-				name="data[place_fee]"> 
-				<?php if(!$data['place_fee']):?>
+			<th>代理费种类</th>
+			<td class="editable"><span></span>
+			<table ><tr><td><select id='data_bid_fee_sort' 
+				name="data[bid_fee_sort]" style="margin-left: -5px;"> 
+				<?php if(!$data['bid_fee_sort']):?>
 				<option value=''>请选择</option>
 				<?php endif;?>
-				<?php foreach(SelectConstent::getSelectPlaceFee() as $option):?>
-				<option value="<?php echo $option;?>" <?php if ($option==$data['place_fee']) echo 'selected';?>><?php echo $option;?></option>
+				<?php foreach(SelectConstent::getSelectBidFeeSort() as $option):?>
+				<option value="<?php echo $option;?>" <?php if ($option==$data['bid_fee_sort']) echo 'selected';?>><?php echo $option;?></option>
 				<?php endforeach;?>
-			</select><span style='color:red;'>*</span></td>
+			</select><span style='color:red;'>*</span><input type="text" value="<?php echo $data['bid_fee_sort_other'];?>" name="data[bid_fee_sort_other]" ><span style='color:red;'></span></td></tr></table>
+			</td>
 		</tr>
 		<tr>
-			<th>设联会费用</th>
+			<th>投标服务费</th>
 			<td class="editable"><span></span> 
-			<select id='data_skill_fee' 
-				name="data[skill_fee]"> 
-				<?php if(!$data['skill_fee']):?>
-				<option value=''>请选择</option>
-				<?php endif;?>
-				<?php foreach(SelectConstent::getSelectPlaceFee() as $option):?>
-				<option value="<?php echo $option;?>" <?php if ($option==$data['skill_fee']) echo 'selected';?>><?php echo $option;?></option>
-				<?php endforeach;?>
-			</select><span style='color:red;'>*</span></td>
+			<input type="text"
+				value="<?php echo $data['skill_fee'];?>" name="data[skill_fee]">
+			</td>
 		</tr>
 		<tr>
 			<th>&nbsp;</th>
@@ -148,7 +162,6 @@ var bid_fee_qita = "<?php echo SelectConstent::BID_FEE_QITA; ?>";
 function checkSubmit(){
 //	项目信息、招标人、规格型号、业务员、标书管理员
 	if($("#data_project_name").val().length == 0){
-		alert(1);
 		$("#data_project_name").next().html('必填项！');
 		return false;
 	}else{
@@ -190,6 +203,13 @@ function checkSubmit(){
 	}else{
 		$("input[name='data[tender_manager]']").next().html('');
 	}
+
+	if($("input[name='data[respective_provinces]']").val().length == 0){
+		$("input[name='data[respective_provinces]']").next().html('必填项！');
+		return false;
+	}else{
+		$("input[name='data[respective_provinces]']").next().html('');
+	}
 	if($("input[name='data[tender_fee]']").val().length == 0){
 		$("input[name='data[tender_fee]']").next().html('必填项！');
 		return false;
@@ -203,29 +223,53 @@ function checkSubmit(){
 	}else{
 		$("#data_bid_fee").next().html('');
 	}
-	if($("#data_bid_fee").children('option:selected').val() == bid_fee_free && $("input[name='data[bid_fee_value]']").val().length == 0){
-		$("input[name='data[bid_fee_value]']").next().html('必填项！');
-		return false;
-	}else{
-		$("input[name='data[bid_fee_value]']").next().html('');
-	}
+	
 	if($("#data_bid_fee").children('option:selected').val() == bid_fee_qita && $("input[name='data[bid_fee_value]']").val().length == 0){
 		$("input[name='data[bid_fee_value]']").next().html('必填项！');
 		return false;
 	}else{
 		$("input[name='data[bid_fee_value]']").next().html('');
 	}
+	if($("#data_bid_fee").children('option:selected').val() == bid_fee_free && $("input[name='data[bid_fee_value]']").val().length == 0){
+		$("input[name='data[bid_fee_value]']").next().html('必填项！');
+		return false;
+	}else{
+		$("input[name='data[bid_fee_value]']").next().html('');
+	}
+
+
+	if($("#data_bid_fee_sort").val().length == 0){
+		$("#data_bid_fee_sort").next().html('必填项！');
+		return false;
+	}else{
+		$("#data_bid_fee_sort").next().html('');
+	}
+	
+	if($("#data_bid_fee_sort").children('option:selected').val() == bid_fee_qita && $("input[name='data[bid_fee_sort_other]']").val().length == 0){
+		$("input[name='data[bid_fee_sort_other]']").next().html('必填项！');
+		return false;
+	}else{
+		$("input[name='data[bid_fee_sort_other]']").next().html('');
+	}
+
+	if($("#data_currency").val().length == 0){
+		$("#data_currency").next().html('必填项！');
+		return false;
+	}else{
+		$("#data_currency").next().html('');
+	}
+	if($("#data_currency").children('option:selected').val() == bid_fee_qita && $("input[name='data[other_currency]']").val().length == 0){
+		$("input[name='data[other_currency]']").next().html('必填项！');
+		return false;
+	}else{
+		$("input[name='data[other_currency]']").next().html('');
+	}
+	
 	if($("#data_place_fee").val().length == 0){
 		$("#data_place_fee").next().html('必填项！');
 		return false;
 	}else{
 		$("#data_place_fee").next().html('');
-	}
-	if($("#data_skill_fee").val().length == 0){
-		$("#data_skill_fee").next().html('必填项！');
-		return false;
-	}else{
-		$("#data_skill_fee").next().html('');
 	}
 	
 	return true;
@@ -251,6 +295,34 @@ $(function() {
 		$("input[name='data[bid_fee_value]']").show();
 	}else{
 		$("input[name='data[bid_fee_value]']").hide();
+	}
+	
+	$("#data_bid_fee_sort").change(function(){
+		if($(this).children('option:selected').val() == bid_fee_free || $(this).children('option:selected').val() == bid_fee_qita){
+			$("input[name='data[bid_fee_sort_other]']").show();
+		}else{
+			$("input[name='data[bid_fee_sort_other]']").hide();
+			$("input[name='data[bid_fee_sort_other]']").val('');
+		}
+	});
+	if($("#data_bid_fee_sort").children('option:selected').val() == bid_fee_free || $("#bid_fee_sort").children('option:selected').val() == bid_fee_qita){
+		$("input[name='data[bid_fee_sort_other]']").show();
+	}else{
+		$("input[name='data[bid_fee_sort_other]']").hide();
+	}
+	
+	$("#data_currency").change(function(){
+		if($(this).children('option:selected').val() == bid_fee_free || $(this).children('option:selected').val() == bid_fee_qita){
+			$("input[name='data[other_currency]']").show();
+		}else{
+			$("input[name='data[other_currency]']").hide();
+			$("input[name='data[other_currency]']").val('');
+		}
+	});
+	if($("#data_currency").children('option:selected').val() == bid_fee_free || $("#data_currency").children('option:selected').val() == bid_fee_qita){
+		$("input[name='data[other_currency]']").show();
+	}else{
+		$("input[name='data[other_currency]']").hide();
 	}
 });
 </script>

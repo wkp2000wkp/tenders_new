@@ -37,7 +37,7 @@ class PHPExcelTool {
 			
 			"F" => "编号",
 			"G" => "区域",
-			"H" => "省份",
+			"H" => "国家",
 			"I" => "项目简称",
 			"J" => "招标人",
 			"K" => "业务员",
@@ -125,13 +125,25 @@ class PHPExcelTool {
 				$rowNumber ++;
 				$key = 0;
 				foreach ( $row as $showKey => $showValue ) {
-					if ($showKey == 'id' || $showKey == 'bid_fee_value') {
+					if ($showKey == 'id' || $showKey == 'bid_fee_value' || $showKey == 'bid_fee_sort_other' || $showKey == 'other_currency') {
 						continue;
+					}
+					
+					//currency 币种
+					if ($showKey == 'currency' && ($showValue == SelectConstent::BID_FEE_QITA)) {
+						$showValue = $row ['other_currency'] ;
+					} elseif($showKey == 'currency'){
+						$showValue = $row ['currency'];
 					}
 					if ($showKey == 'bid_fee' && ($showValue == SelectConstent::BID_FEE_FREE)) {
 						$showValue = $row ['bid_fee_value'] . '%';
 					} elseif ($showKey == 'bid_fee' && $showValue == SelectConstent::BID_FEE_QITA) {
 						$showValue = $row ['bid_fee_value'];
+					}
+					if ($showKey == 'bid_fee_sort' && ($showValue == SelectConstent::BID_FEE_QITA)) {
+						$showValue = $row ['bid_fee_sort_other'] ;
+					} elseif ($showKey == 'bid_fee_sort' ) {
+						$showValue = $row ['bid_fee_sort'];
 					}
 					$XY = self::$cloumnsExecl [$key] . $rowNumber;
 					self::setStyle ( $this->objActSheet, $XY );
@@ -531,7 +543,7 @@ class PHPExcelTool {
 			foreach ( $data as $companyName => $list ) {
 				$this->objActSheet->setCellValue ( 'A' . $Y, '编号' );
 				$this->objActSheet->setCellValue ( 'B' . $Y, '区域' );
-				$this->objActSheet->setCellValue ( 'C' . $Y, '省份' );
+				$this->objActSheet->setCellValue ( 'C' . $Y, '国家' );
 				$this->objActSheet->setCellValue ( 'D' . $Y, '项目简称' );
 				$this->objActSheet->setCellValue ( 'E' . $Y, '招标人' );
 				$this->objActSheet->setCellValue ( 'F' . $Y, '业务员' );
@@ -618,7 +630,7 @@ class PHPExcelTool {
 		if ($data) {
 			$this->objActSheet->setCellValue ( 'A' . $Y, '编号' );
 			$this->objActSheet->setCellValue ( 'B' . $Y, '区域' );
-			$this->objActSheet->setCellValue ( 'C' . $Y, '省份' );
+			$this->objActSheet->setCellValue ( 'C' . $Y, '国家' );
 			$this->objActSheet->setCellValue ( 'D' . $Y, '项目简称' );
 			$this->objActSheet->setCellValue ( 'E' . $Y, '招标人' );
 			$this->objActSheet->setCellValue ( 'F' . $Y, '业务员' );
@@ -694,7 +706,7 @@ class PHPExcelTool {
 		if ($data) {
 			$this->objActSheet->setCellValue ( 'A' . $Y, '编号' );
 			$this->objActSheet->setCellValue ( 'B' . $Y, '区域' );
-			$this->objActSheet->setCellValue ( 'C' . $Y, '省份' );
+			$this->objActSheet->setCellValue ( 'C' . $Y, '国家' );
 			$this->objActSheet->setCellValue ( 'D' . $Y, '项目简称' );
 			$this->objActSheet->setCellValue ( 'E' . $Y, '招标人' );
 			$this->objActSheet->setCellValue ( 'F' . $Y, '类型' );

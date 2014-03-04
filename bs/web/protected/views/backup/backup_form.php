@@ -81,6 +81,11 @@
 				value="<?php echo $data['bid_bond'];?>" name="data[bid_bond]"></td>
 		</tr>
 		<tr>
+			<th class="sortable"><span>投标有效期(天)</span> </th>
+			<td class="editable td_css_bid_valid"><input type="text"
+				value="<?php echo $data['bid_valid'];?>" name="data[bid_valid]"></td>
+		</tr>
+		<tr>
 			<th class="sortable"><span>是否中标</span> </th>
 			<td class="editable"><select name="data[bid]">
 			    <?php foreach(SelectConstent::getSelectBid() as $option):?>

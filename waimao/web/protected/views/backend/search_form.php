@@ -35,7 +35,7 @@ function hiddenSearchTable(){
 			<th><span style='width:80px;'>标书管理员</th>
 			<td ><input type="text"
 				value="<?php echo $data['tender_manager'];?>" name="search[tender_manager]"></td>
-			<th><span style='width:80px;'>所属省份</th>
+			<th><span style='width:80px;'>所属国家</th>
 			<td ><input type="text"
 				value="<?php echo $data['respective_provinces'];?>" name="search[respective_provinces]"></td>
 			<th><span style='width:80px;'>所属区域</th>

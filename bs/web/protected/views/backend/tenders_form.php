@@ -89,6 +89,11 @@
 				value="<?php echo $data['bid_bond'];?>" name="data[bid_bond]"></td>
 		</tr>
 		<tr>
+			<th>投标有效期(天)</th>
+			<td class="editable"><span></span> <input type="text"
+				value="<?php echo $data['bid_valid'];?>" name="data[bid_valid]"></td>
+		</tr>
+		<tr>
 			<th>中标服务费(%)</th>
 			<td class="editable"><span></span>
 			<table ><tr><td><select id='data_bid_fee' 
@@ -124,7 +129,7 @@
 				<?php if(!$data['skill_fee']):?>
 				<option value=''>请选择</option>
 				<?php endif;?>
-				<?php foreach(SelectConstent::getSelectPlaceFee() as $option):?>
+				<?php foreach(SelectConstent::getSelectSkillFee() as $option):?>
 				<option value="<?php echo $option;?>" <?php if ($option==$data['skill_fee']) echo 'selected';?>><?php echo $option;?></option>
 				<?php endforeach;?>
 			</select><span style='color:red;'>*</span></td>
@@ -148,7 +153,6 @@ var bid_fee_qita = "<?php echo SelectConstent::BID_FEE_QITA; ?>";
 function checkSubmit(){
 //	项目信息、招标人、规格型号、业务员、标书管理员
 	if($("#data_project_name").val().length == 0){
-		alert(1);
 		$("#data_project_name").next().html('必填项！');
 		return false;
 	}else{
@@ -190,6 +194,7 @@ function checkSubmit(){
 	}else{
 		$("input[name='data[tender_manager]']").next().html('');
 	}
+	
 	if($("input[name='data[tender_fee]']").val().length == 0){
 		$("input[name='data[tender_fee]']").next().html('必填项！');
 		return false;

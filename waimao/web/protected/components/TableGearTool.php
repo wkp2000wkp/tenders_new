@@ -17,6 +17,7 @@ class TableGearTool extends CWidget
     public $table = array();
     public $selects = array();
     public function getTableGearTool () {
+    
         if (!$this->TableGear) {
             $databaseConfig = SelectConstent::getDataBaseConfig();
             $options["database"]["host"] = $databaseConfig['host'];

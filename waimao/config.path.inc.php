@@ -15,4 +15,4 @@ define ( 'BID_STR', '是' );
 define ( 'MYSQL_HOST', 'localhost' );
 define ( 'MYSQL_USER', 'root' );
 define ( 'MYSQL_PASSWORD', '' );
-define ( 'MYSQL_DB', 'tenders20130425' );
+define ( 'MYSQL_DB', 'tenders_waimao' );

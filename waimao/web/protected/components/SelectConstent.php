@@ -47,6 +47,9 @@ class SelectConstent
     public static function getSelectBidFee(){
         return array('国标',self::BID_FEE_FREE,'未提',self::BID_FEE_QITA);
     }
+    public static function getSelectBidFeeSort(){
+        return array('FOB','CIF','合同总价',self::BID_FEE_QITA);
+    }
     public static function getSelectPlaceFee(){
         return array('有','未提');
     }
@@ -55,7 +58,12 @@ class SelectConstent
     }
     
     public static function getSelectRespectiveRegions(){
-        return array('浙江','华东','华中','西北','东北','南方','央企','国网','直属');
+//         return array('浙江','华东','华中','西北','东北','南方','央企','国网','直属');
+        return array('国内','国外');
+    }
+    
+    public static function getSelectCurrency(){
+    	return array('美元','欧元','人民币',self::BID_FEE_QITA);
     }
     
     public static function getSelectYesOrNo(){
@@ -81,12 +89,14 @@ class SelectConstent
 			  'end_time'=>'开标日期', 
 			  'tender_manager'=>'标书管理员', 
 			  'respective_regions'=>'所属区域', 
-			  'respective_provinces'=>'所属省份', 
-			  'tender_fee'=>'标书费(元)', 
-			  'bid_bond'=>'投标保证金(万元)',
-			  'bid_fee'=>'中标服务费(%)', 
-			  'place_fee'=>'就位费', 
-			  'skill_fee'=>'设联会费用', 
+			  'respective_provinces'=>'所属国家', 
+			  'tender_fee'=>'标书费(多币种)', 
+			  'bid_bond'=>'投标保证金(多币种)',
+			  'currency'=>'币种',
+			  'bid_valid'=>'投标有效期(天)',
+			  'bid_fee'=>'代理费', 
+			  'bid_fee_sort'=>'代理费种类', 
+			  'skill_fee'=>'投标服务费', 
         );
     }
     
@@ -104,18 +114,20 @@ class SelectConstent
 			  'end_time'=>'开标日期', 
 			  'tender_manager'=>'标书管理员', 
 			  'respective_regions'=>'所属区域', 
-              'respective_provinces'=>'所属省份', 
-			  'tender_fee'=>'标书费(元)', 
-			  'bid_bond'=>'投标保证金(万元)',
+              'respective_provinces'=>'所属国家', 
+			  'tender_fee'=>'标书费(多币种)', 
+			  'bid_bond'=>'投标保证金(多币种)',
+			  'currency'=>'币种',
+			  'bid_valid'=>'投标有效期(天)',
 			  'bid'=>'是否中标',
 			  'manufacturers'=>'中标厂家',
 			  'san_bid_all_price'=>'三变投标总价(万元)',
 			  'san_bid_price'=>'三变中标总价(万元)',
 			  'feedback'=>'是否反馈',
 			  'reimbursement'=>'是否报销',
-			  'bid_fee'=>'中标服务费(%)',
-			  'place_fee'=>'就位费',
-			  'skill_fee'=>'设联会费用',
+			  'bid_fee'=>'代理费',
+			  'bid_fee_sort'=>'代理费种类',
+			  'skill_fee'=>'投标服务费',
 			  'remark'=>'备注',
         );
     }
@@ -147,7 +159,7 @@ class SelectConstent
     	return array(
               'tb_show_id'=>'编号',
               'respective_regions'=>'所属区域',
-              'respective_provinces'=>'所属省份', 
+              'respective_provinces'=>'所属国家', 
 			  'slesman'=>'业务员', 
 			  'end_time'=>'开标日期',
 			  'transformer_type'=>'变压器类型', 
@@ -157,7 +169,7 @@ class SelectConstent
     	return array(
               'tb_show_id'=>'编号',
               'respective_regions'=>'所属区域',
-              'respective_provinces'=>'所属省份', 
+              'respective_provinces'=>'所属国家', 
 			  'transformer_type'=>'变压器类型', 
 			  'bid_company'=>'中标厂家', 
         );
@@ -186,6 +198,8 @@ class SelectConstent
     			'respective_provinces'=>'60', 
     			'tender_fee'=>'60', 
     			'bid_bond'=>'80',
+    			'currency'=>'80',
+    			'bid_valid'=>'80',
     			'bid'=>'30',
     			'san_bid_all_price'=>'85',
     			'san_bid_price'=>'85',
@@ -193,6 +207,7 @@ class SelectConstent
     			'feedback'=>'30',
     			'reimbursement'=>'30',
         		'bid_fee'=>'50',
+        		'bid_fee_sort'=>'50',
     			'place_fee'=>'50',
     			'skill_fee'=>'50',
     			'remark'=>'200',
@@ -219,6 +234,8 @@ class SelectConstent
     			'respective_provinces'=>'td_css_respective_provinces', 
     			'tender_fee'=>'td_css_tender_fee', 
     			'bid_bond'=>'td_css_bid_bond',
+    			'bid_valid'=>'td_css_bid_valid',
+    			'currency'=>'td_css_currency',
     			'bid'=>'td_css_bid',
     			'san_bid_all_price'=>'td_css_san_bid_all_price',
     			'san_bid_price'=>'td_css_san_bid_price',
@@ -226,6 +243,7 @@ class SelectConstent
     			'feedback'=>'td_css_feedback',
     			'reimbursement'=>'td_css_reimbursement',
         		'bid_fee'=>'td_css_bid_fee',
+        		'bid_fee_sort'=>'td_css_bid_fee_sort',
     			'place_fee'=>'td_css_place_fee',
     			'skill_fee'=>'td_css_skill_fee',
     			'remark'=>'td_css_remark',
