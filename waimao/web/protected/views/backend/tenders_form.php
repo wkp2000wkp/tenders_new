@@ -1,7 +1,4 @@
-
-
-
-  <LINK  type="text/css" rel="stylesheet" href="css/tablegear.css" />
+<LINK  type="text/css" rel="stylesheet" href="css/tablegear.css" />
 <form class="newRow" id="addNewRow_tgTable" method="post" onsubmit="javascript:return checkSubmit();" action='<?php echo URL_DOMAIN;?>/index.php?r=operation/izb&action=<?php echo $action;?>&zb_id=<?php echo $data['id'];?>'>
 <h3>招标项目</h3> 
 <table style='width: 750px;'>
@@ -84,14 +81,9 @@
 				value="<?php echo $data['tender_fee'];?>" name="data[tender_fee]"><span style='color:red;'>*</span></td>
 		</tr>
 		<tr>
-			<th>投标保证金(多币种)</th>
-			<td class="editable"><span></span> <input type="text"
-				value="<?php echo $data['bid_bond'];?>" name="data[bid_bond]"></td>
-		</tr>
-		<tr>
-			<th>币种</th>
+			<th>标书费币种</th>
 			<td class="editable"><span></span>
-			<table ><tr><td><select id='data_currency' 
+			<table ><tr><td><select id='data_currency' class='currency'
 				name="data[currency]" style="margin-left: -5px;"> 
 				<?php if(!$data['currency']):?>
 				<option value=''>请选择</option>
@@ -99,7 +91,26 @@
 				<?php foreach(SelectConstent::getSelectCurrency() as $option):?>
 				<option value="<?php echo $option;?>" <?php if ($option==$data['currency']) echo 'selected';?>><?php echo $option;?></option>
 				<?php endforeach;?>
-			</select><span style='color:red;'>*</span><input type="text" value="<?php echo $data['other_currency'];?>" name="data[other_currency]" ><span style='color:red;'></span></td></tr></table>
+			</select><span style='color:red;'>*</span><input type="text" size=10 value="<?php echo $data['other_currency'];?>" name="data[other_currency]" ><span style='color:red;'></span></td></tr></table>
+			</td>
+		</tr>
+		<tr>
+			<th>投标保证金(多币种)</th>
+			<td class="editable"><span></span> <input type="text"
+				value="<?php echo $data['bid_bond'];?>" name="data[bid_bond]"></td>
+		</tr>
+		<tr>
+			<th>投标保证金币种</th>
+			<td class="editable"><span></span>
+			<table ><tr><td><select id='data_currency_bid_bond' class='currency'
+				name="data[currency_bid_bond]" style="margin-left: -5px;"> 
+				<?php if(!$data['currency_bid_bond']):?>
+				<option value=''>请选择</option>
+				<?php endif;?>
+				<?php foreach(SelectConstent::getSelectCurrency() as $option):?>
+				<option value="<?php echo $option;?>" <?php if ($option==$data['currency_bid_bond']) echo 'selected';?>><?php echo $option;?></option>
+				<?php endforeach;?>
+			</select><input type="text" size=10 value="<?php echo $data['other_currency_bid_bond'];?>" name="data[other_currency_bid_bond]" ><span style='color:red;'></span></td></tr></table>
 			</td>
 		</tr>
 		<tr>
@@ -119,7 +130,21 @@
 				<?php foreach(SelectConstent::getSelectBidFee() as $option):?>
 				<option value="<?php echo $option;?>" <?php if ($option==$data['bid_fee']) echo 'selected';?>><?php echo $option;?></option>
 				<?php endforeach;?>
-			</select><span style='color:red;'>*</span><input type="text" value="<?php echo $data['bid_fee_value'];?>" name="data[bid_fee_value]" ><span style='color:red;'></span></td></tr></table>
+			</select><span style='color:red;'>*</span><input type="text" size=10 value="<?php echo $data['bid_fee_value'];?>" name="data[bid_fee_value]" ><span style='color:red;'></span></td></tr></table>
+			</td>
+		</tr>
+		<tr>
+			<th>代理费币种</th>
+			<td class="editable"><span></span>
+			<table ><tr><td><select id='data_currency_bid_fee' class='currency'
+				name="data[currency_bid_fee]" style="margin-left: -5px;"> 
+				<?php if(!$data['currency_bid_fee']):?>
+				<option value=''>请选择</option>
+				<?php endif;?>
+				<?php foreach(SelectConstent::getSelectCurrency() as $option):?>
+				<option value="<?php echo $option;?>" <?php if ($option==$data['currency_bid_fee']) echo 'selected';?>><?php echo $option;?></option>
+				<?php endforeach;?>
+			</select><span style='color:red;'>*</span><input type="text" value="<?php echo $data['other_currency_bid_fee'];?>" name="data[other_currency_bid_fee]" ><span style='color:red;'></span></td></tr></table>
 			</td>
 		</tr>
 		<tr>
@@ -159,170 +184,6 @@
 <script>
 var bid_fee_free = "<?php echo SelectConstent::BID_FEE_FREE; ?>";
 var bid_fee_qita = "<?php echo SelectConstent::BID_FEE_QITA; ?>";
-function checkSubmit(){
-//	项目信息、招标人、规格型号、业务员、标书管理员
-	if($("#data_project_name").val().length == 0){
-		$("#data_project_name").next().html('必填项！');
-		return false;
-	}else{
-		$("#data_project_name").next().html('');
-	}
-	if($("input[name='data[tenderer]']").val().length == 0){
-		$("input[name='data[tenderer]']").next().html('必填项！');
-		return false;
-	}else{
-		$("input[name='data[tenderer]']").next().html('');
-	}
-	if($("#data_specification").val().length == 0){
-		$("#data_specification").next().html('必填项！');
-		return false;
-	}else{
-		$("#data_specification").next().html('');
-	}
-	if($("#data_transformer_type").val().length == 0){
-		$("#data_transformer_type").next().html('必填项！');
-		return false;
-	}else{
-		$("#data_transformer_type").next().html('');
-	}
-	if($("#data_respective_regions").val().length == 0){
-		$("#data_respective_regions").next().html('必填项！');
-		return false;
-	}else{
-		$("#data_respective_regions").next().html('');
-	}
-	if($("input[name='data[slesman]']").val().length == 0){
-		$("input[name='data[slesman]']").next().html('必填项！');
-		return false;
-	}else{
-		$("input[name='data[slesman]']").next().html('');
-	}
-	if($("input[name='data[tender_manager]']").val().length == 0){
-		$("input[name='data[tender_manager]']").next().html('必填项！');
-		return false;
-	}else{
-		$("input[name='data[tender_manager]']").next().html('');
-	}
-
-	if($("input[name='data[respective_provinces]']").val().length == 0){
-		$("input[name='data[respective_provinces]']").next().html('必填项！');
-		return false;
-	}else{
-		$("input[name='data[respective_provinces]']").next().html('');
-	}
-	if($("input[name='data[tender_fee]']").val().length == 0){
-		$("input[name='data[tender_fee]']").next().html('必填项！');
-		return false;
-	}else{
-		$("input[name='data[tender_fee]']").next().html('');
-	}
-	
-	if($("#data_bid_fee").val().length == 0){
-		$("#data_bid_fee").next().html('必填项！');
-		return false;
-	}else{
-		$("#data_bid_fee").next().html('');
-	}
-	
-	if($("#data_bid_fee").children('option:selected').val() == bid_fee_qita && $("input[name='data[bid_fee_value]']").val().length == 0){
-		$("input[name='data[bid_fee_value]']").next().html('必填项！');
-		return false;
-	}else{
-		$("input[name='data[bid_fee_value]']").next().html('');
-	}
-	if($("#data_bid_fee").children('option:selected').val() == bid_fee_free && $("input[name='data[bid_fee_value]']").val().length == 0){
-		$("input[name='data[bid_fee_value]']").next().html('必填项！');
-		return false;
-	}else{
-		$("input[name='data[bid_fee_value]']").next().html('');
-	}
-
-
-	if($("#data_bid_fee_sort").val().length == 0){
-		$("#data_bid_fee_sort").next().html('必填项！');
-		return false;
-	}else{
-		$("#data_bid_fee_sort").next().html('');
-	}
-	
-	if($("#data_bid_fee_sort").children('option:selected').val() == bid_fee_qita && $("input[name='data[bid_fee_sort_other]']").val().length == 0){
-		$("input[name='data[bid_fee_sort_other]']").next().html('必填项！');
-		return false;
-	}else{
-		$("input[name='data[bid_fee_sort_other]']").next().html('');
-	}
-
-	if($("#data_currency").val().length == 0){
-		$("#data_currency").next().html('必填项！');
-		return false;
-	}else{
-		$("#data_currency").next().html('');
-	}
-	if($("#data_currency").children('option:selected').val() == bid_fee_qita && $("input[name='data[other_currency]']").val().length == 0){
-		$("input[name='data[other_currency]']").next().html('必填项！');
-		return false;
-	}else{
-		$("input[name='data[other_currency]']").next().html('');
-	}
-	
-	if($("#data_place_fee").val().length == 0){
-		$("#data_place_fee").next().html('必填项！');
-		return false;
-	}else{
-		$("#data_place_fee").next().html('');
-	}
-	
-	return true;
-}
-
 </script>
+<script type="text/javascript" src="js/tenderscheck.js"></script>
 
-<script>
-$(function() {
-	
-	$("input[name='data[end_time]']").datepicker({
-		changeYear: true,
-		changeMonth: true});
-	$("#data_bid_fee").change(function(){
-		if($(this).children('option:selected').val() == bid_fee_free || $(this).children('option:selected').val() == bid_fee_qita){
-			$("input[name='data[bid_fee_value]']").show();
-		}else{
-			$("input[name='data[bid_fee_value]']").hide();
-			$("input[name='data[bid_fee_value]']").val('');
-		}
-	});
-	if($("#data_bid_fee").children('option:selected').val() == bid_fee_free || $("#data_bid_fee").children('option:selected').val() == bid_fee_qita){
-		$("input[name='data[bid_fee_value]']").show();
-	}else{
-		$("input[name='data[bid_fee_value]']").hide();
-	}
-	
-	$("#data_bid_fee_sort").change(function(){
-		if($(this).children('option:selected').val() == bid_fee_free || $(this).children('option:selected').val() == bid_fee_qita){
-			$("input[name='data[bid_fee_sort_other]']").show();
-		}else{
-			$("input[name='data[bid_fee_sort_other]']").hide();
-			$("input[name='data[bid_fee_sort_other]']").val('');
-		}
-	});
-	if($("#data_bid_fee_sort").children('option:selected').val() == bid_fee_free || $("#bid_fee_sort").children('option:selected').val() == bid_fee_qita){
-		$("input[name='data[bid_fee_sort_other]']").show();
-	}else{
-		$("input[name='data[bid_fee_sort_other]']").hide();
-	}
-	
-	$("#data_currency").change(function(){
-		if($(this).children('option:selected').val() == bid_fee_free || $(this).children('option:selected').val() == bid_fee_qita){
-			$("input[name='data[other_currency]']").show();
-		}else{
-			$("input[name='data[other_currency]']").hide();
-			$("input[name='data[other_currency]']").val('');
-		}
-	});
-	if($("#data_currency").children('option:selected').val() == bid_fee_free || $("#data_currency").children('option:selected').val() == bid_fee_qita){
-		$("input[name='data[other_currency]']").show();
-	}else{
-		$("input[name='data[other_currency]']").hide();
-	}
-});
-</script>

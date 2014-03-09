@@ -28,7 +28,7 @@ class PHPExcelTool {
 			'Y',
 			'Z' 
 	);
-	protected static $staticX = 22;
+	protected static $staticX = 23;
 	protected static $pageLine = 20;
 	private $objPHPExcel = null;
 	private $objActSheet = null;
@@ -65,15 +65,30 @@ class PHPExcelTool {
 			"Q" => "核价单保留费率",
 			"R" => "按价格表下浮点数",
 			"S" => "基准价\t\n(相差点数)" ,
-			"T" => "平均价\t\n(相差点数)" 
+			"T" => "平均价\t\n(相差点数)" ,
+			"U" => "币种" ,
 	);
 	protected static $kaiBiaoStaticHeaderKey2 = array (
 			"M" => "transformer_type",
 			"N" => "specification",
 			"O" => "number",
 			"Q" => "baoliu",
-			"R" => "xiafu" 
+			"R" => "xiafu" ,
+			"U" => "currency_ji_zhun_price" ,
 	);
+	
+	protected static $noShowKeyList = array(
+			'id',
+			'bid_fee_value',
+			'bid_fee_sort_other',
+			'currency',
+			'other_currency',
+			'currency_bid_fee',
+			'other_currency_bid_fee',
+			'currency_bid_bond',
+			'other_currency_bid_bond',
+			
+			);
 	
 	public function createExeclFileHeader() {
 		$this->objPHPExcel = new PHPExcel ();
@@ -125,26 +140,41 @@ class PHPExcelTool {
 				$rowNumber ++;
 				$key = 0;
 				foreach ( $row as $showKey => $showValue ) {
-					if ($showKey == 'id' || $showKey == 'bid_fee_value' || $showKey == 'bid_fee_sort_other' || $showKey == 'other_currency') {
+					if(in_array($showKey, self::$noShowKeyList)){
 						continue;
 					}
 					
-					//currency 币种
-					if ($showKey == 'currency' && ($showValue == SelectConstent::BID_FEE_QITA)) {
-						$showValue = $row ['other_currency'] ;
-					} elseif($showKey == 'currency'){
-						$showValue = $row ['currency'];
-					}
 					if ($showKey == 'bid_fee' && ($showValue == SelectConstent::BID_FEE_FREE)) {
 						$showValue = $row ['bid_fee_value'] . '%';
 					} elseif ($showKey == 'bid_fee' && $showValue == SelectConstent::BID_FEE_QITA) {
 						$showValue = $row ['bid_fee_value'];
 					}
+					
 					if ($showKey == 'bid_fee_sort' && ($showValue == SelectConstent::BID_FEE_QITA)) {
 						$showValue = $row ['bid_fee_sort_other'] ;
 					} elseif ($showKey == 'bid_fee_sort' ) {
 						$showValue = $row ['bid_fee_sort'];
 					}
+					//currency_bid_fee+bid_fee
+					if ($showKey == 'bid_fee' && ($row ['currency_bid_fee'] == SelectConstent::BID_FEE_QITA)) {
+						$showValue .= $row ['other_currency_bid_fee'] ;
+					} elseif($showKey == 'currency_bid_fee'){
+						$showValue .= $row ['currency_bid_fee'];
+					}
+					//currency+tender_fee
+					if ($showKey == 'tender_fee' && ($row ['currency'] == SelectConstent::BID_FEE_QITA)) {
+						$showValue = $row ['tender_fee'].$row ['other_currency'] ;
+					} elseif($showKey == 'tender_fee'){
+						$showValue = $row ['tender_fee'].$row ['currency'];
+					}
+					//currency_bid_bond+bid_bond
+					if ($showKey == 'bid_bond' && ($row ['currency_bid_bond'] == SelectConstent::BID_FEE_QITA)) {
+						$showValue = $row ['bid_bond'].$row ['other_currency_bid_bond'] ;
+					} elseif($showKey == 'bid_bond'){
+						$showValue = $row ['bid_bond'].$row ['currency_bid_bond'];
+					}
+					
+					
 					$XY = self::$cloumnsExecl [$key] . $rowNumber;
 					self::setStyle ( $this->objActSheet, $XY );
 					$this->objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( $XY, $showValue );
@@ -226,6 +256,12 @@ class PHPExcelTool {
 						$this->objActSheet->mergeCells ( $staticX_PJ . ($kY + 1) . ':' . $staticX_PJ . ($kY + $lineNumber * 2) );
 						self::setStyle ( $this->objActSheet, $staticX_PJ . ($kY + 1) );
 						$this->objActSheet->setCellValue ( $staticX_PJ . ($kY + 1), $k['ji_zhun_price'] );
+						// 开标币种 U
+						$staticX_PJ = "U";
+						$this->objActSheet->mergeCells ( $staticX_PJ . ($kY + 1) . ':' . $staticX_PJ . ($kY + $lineNumber * 2) );
+						self::setStyle ( $this->objActSheet, $staticX_PJ . ($kY + 1) );
+						$currency_ji_zhun_price = ($k['currency_ji_zhun_price'] == SelectConstent::BID_FEE_QITA) ? $k['other_currency_ji_zhun_price'] : $k['currency_ji_zhun_price'];
+						$this->objActSheet->setCellValue ( $staticX_PJ . ($kY + 1), $currency_ji_zhun_price );
 						
 						$numX = self::$staticX; // get cplums to N
 						if ($data ['r'] [$k ['tb_id']] [$k ['id']]) {
@@ -361,6 +397,12 @@ class PHPExcelTool {
 				$this->objActSheet->mergeCells ( $staticX_PJ . ($kY + 1) . ':' . $staticX_PJ . ($kY + $lineNumber * 2) );
 				self::setStyle ( $this->objActSheet, $staticX_PJ . ($kY + 1) );
 				$this->objActSheet->setCellValue ( $staticX_PJ . ($kY + 1), $k['ji_zhun_price'] );
+				// 开标币种 U
+				$staticX_PJ = "U";
+				$this->objActSheet->mergeCells ( $staticX_PJ . ($kY + 1) . ':' . $staticX_PJ . ($kY + $lineNumber * 2) );
+				self::setStyle ( $this->objActSheet, $staticX_PJ . ($kY + 1) );
+				$currency_ji_zhun_price = ($k['currency_ji_zhun_price'] == SelectConstent::BID_FEE_QITA) ? $k['other_currency_ji_zhun_price'] : $k['currency_ji_zhun_price'];
+				$this->objActSheet->setCellValue ( $staticX_PJ . ($kY + 1), $currency_ji_zhun_price );
 				
 				$numX = self::$staticX;
 				// get cplums to N

@@ -38,10 +38,10 @@ class SelectConstent
     }
     
     public static function getSelectTransformerType(){
-        return array('220','110','35kV级及以下','干变','箱变','其它');
+        return array('330及以上','220','110','35kV级及以下','干变','箱变','其它');
     }
     public static function getSelectKaiBiaoTransformerType(){
-    	return array('220','110','35','10kV油变','非晶合金','干变','箱变','其它');
+    	return array('330及以上','220','110','35','10kV油变','非晶合金','干变','箱变','其它');
     }
 
     public static function getSelectBidFee(){
@@ -94,7 +94,7 @@ class SelectConstent
 			  'bid_bond'=>'投标保证金(多币种)',
 			  'currency'=>'币种',
 			  'bid_valid'=>'投标有效期(天)',
-			  'bid_fee'=>'代理费', 
+			  'bid_fee'=>'代理费(多币种)', 
 			  'bid_fee_sort'=>'代理费种类', 
 			  'skill_fee'=>'投标服务费', 
         );
@@ -208,7 +208,6 @@ class SelectConstent
     			'reimbursement'=>'30',
         		'bid_fee'=>'50',
         		'bid_fee_sort'=>'50',
-    			'place_fee'=>'50',
     			'skill_fee'=>'50',
     			'remark'=>'200',
             );
@@ -244,7 +243,6 @@ class SelectConstent
     			'reimbursement'=>'td_css_reimbursement',
         		'bid_fee'=>'td_css_bid_fee',
         		'bid_fee_sort'=>'td_css_bid_fee_sort',
-    			'place_fee'=>'td_css_place_fee',
     			'skill_fee'=>'td_css_skill_fee',
     			'remark'=>'td_css_remark',
             );

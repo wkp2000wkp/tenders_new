@@ -13,7 +13,9 @@
 	<tr>
 		<th class="sortable">变压器类型</th>
 		<td class="editable"><select name="data[transformer_type]" id="data_transformer_type">
-				<option value="">请选择</option>
+				<?php if($action == 'insert'):?>
+				<option value=''>请选择</option>
+				<?php endif;?>
 				<?php foreach(SelectConstent::getSelectKaiBiaoTransformerType() as $option):?>
 				<option value="<?php echo $option;?>"
 				<?php if ($option==$kaibiao_list['kaibiao_result']['transformer_type']) echo 'selected';?>><?php echo $option;?></option>
@@ -44,7 +46,21 @@
 		<th class="sortable">中标厂家</th>
 		<td><?php echo $bid_record['bid_company'];?></td>
 	</tr>
-
+	<tr>
+		<th class="sortable">币种</th>
+		<td class="editable"><select name="data[currency_ji_zhun_price]" id="data_currency_ji_zhun_price">
+				<?php if(!$data['currency_ji_zhun_price'] || !$toubiao_info['currency']):?>
+				<option value=''>请选择<?php echo $action;?></option>
+				<?php endif;?>
+				<?php foreach(SelectConstent::getSelectCurrency() as $option):?>
+				<?php if ($action == 'insert'):?>
+					<option value="<?php echo $option;?>" <?php if ($option==$toubiao_info['currency']) echo 'selected';?>><?php echo $option;?></option>
+				<?php else:?>
+					<option value="<?php echo $option;?>" <?php if ($option==$kaibiao_list['kaibiao_result']['currency_ji_zhun_price']) echo 'selected';?>><?php echo $option;?></option>
+				<?php endif;?>
+				<?php endforeach;?>
+			</select><input type="text" size=10 value="<?php echo  ($action == 'insert') ? $toubiao_info['other_currency'] : $kaibiao_list['kaibiao_result']['other_currency_ji_zhun_price'] ;?>" name="data[other_currency_ji_zhun_price]" ></td>
+	</tr>
 </table>
 <br>
 <table border=0 style='width: 500px'>
@@ -111,6 +127,9 @@
 <!--<a href='<?php echo $referer; ?>' class='ui-state-default ui-corner-all'>返回>></a>-->
 </form>
 <script>
+var bid_fee_qita = "<?php echo SelectConstent::BID_FEE_QITA; ?>";
+</script>
+<script>
  	var insert_tr_id=2;
  	var kaibiao_str='<?php echo KAIBIAO_BID_STR;?>';
  	var tou_biao_id='<?php echo $tou_biao_id;?>';
@@ -148,10 +167,23 @@
         if($(this).attr("tag")==1){$(this).attr("checked",false);$(this).attr("tag",0); }
         else{$(this).attr("tag",1);}  
   	});
-  	    
-    
+  
+    $("#data_currency_ji_zhun_price").change(function(){
+		showChangeAndDefaultSelect("data_currency_ji_zhun_price","other_currency_ji_zhun_price",bid_fee_qita);
+	});
+		showChangeAndDefaultSelect("data_currency_ji_zhun_price","other_currency_ji_zhun_price",bid_fee_qita);
+	
   });
+  function showChangeAndDefaultSelect(selectid,textname,keystring){
 
+		if($("#"+selectid).children('option:selected').val() == keystring ){
+				$("input[name='data["+textname+"]']").show();
+			}else{
+				$("input[name='data["+textname+"]']").hide();
+				$("input[name='data["+textname+"]']").val('');
+			}
+		
+	}
   function insert_record_click(company,price){
 	  if(!company){
 		  company='';

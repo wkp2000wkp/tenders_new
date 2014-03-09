@@ -15,7 +15,7 @@
     </strong>
 			</div>
 		</div>
-<table border="0" style='width:<?php echo (700+($max_bid-1)*60); ?>px'>	<tbody>
+<table border="0" style='width:<?php echo (770+($max_bid-1)*60); ?>px'>	<tbody>
 <tr  class='odd'>		
 <?php if($permission): ?>
 <td rowspan="2" style='width:30px;'></td>		
@@ -29,6 +29,7 @@
 <td rowspan="2" style='width:70px;'>按价格表下浮点数</td>		
 <td rowspan="2" style='width:70px;'>基准价<br>(相差点数)</td>		
 <td rowspan="2" style='width:70px;'>平均价<br>(相差点数)</td>		
+<td rowspan="2" style='width:70px;'>币种</td>		
 <td colspan="<?php echo $max_bid; ?>" >开标记录（万元）</td>	
 </tr>	
 <tr  class='odd'>	
@@ -59,6 +60,7 @@
 <td rowspan="2"><?php if($kaibiao_list[$kb]['num_bid_price']) echo round(($kaibiao_list[$kb]['all_bid_price']/$kaibiao_list[$kb]['num_bid_price']),1);?>
 <?php if($bid_list[$kaibiao_list[$kb]['id']]['my_bid_price'] != 0 && $kaibiao_list[$kb]['num_bid_price']) echo "<br>(".round(((($kaibiao_list[$kb]['all_bid_price']/$kaibiao_list[$kb]['num_bid_price'])/$bid_list[$kaibiao_list[$kb]['id']]['my_bid_price']-1)*100),1).")";?>
 </td>		
+<td rowspan="2"><?php echo ($kaibiao_list[$kb]['currency_ji_zhun_price'] == SelectConstent::BID_FEE_QITA) ? $kaibiao_list[$kb]['other_currency_ji_zhun_price'] : $kaibiao_list[$kb]['currency_ji_zhun_price'] ;?></td>
 
 <?php
 if($kaibiao_list[$kb]):

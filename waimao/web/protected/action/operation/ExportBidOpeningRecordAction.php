@@ -43,7 +43,10 @@ class ExportBidOpeningRecordAction extends APPBaseAction
     	$headersAry=array_keys($headers);
     	$headersAry[]='bid_fee_value';
     	$headersAry[]='bid_fee_sort_other';
+//     	标书费、保证金、代理费的币种
     	$headersAry[]='other_currency';
+    	$headersAry[]='other_currency_bid_fee';
+    	$headersAry[]='other_currency_bid_bond';
 		$sql = $this->getSqlSelect($tableName,$headersAry,$whereData);
 		if($dateArea){
 			$sql .= " and kaibiao_number > 0 ";

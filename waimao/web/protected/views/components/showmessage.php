@@ -8,6 +8,8 @@ echo $jump_url;
 function jump(url){
 	if(url == '-1')
 		history.go(url);
+	else if(url == 'index.php')
+		window.parent.location=url;
 	else
 		self.location=url;
 }

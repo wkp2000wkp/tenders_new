@@ -23,18 +23,41 @@
         		         <?php foreach($table_list as $list): ?>
         		        <tr>
         		         <?php foreach($table_header as $c_key => $c_name): ?>
+        		         
+        		         <?php 
+        		         $show='';
+        		         if($c_key=='bid_fee' && $list[$c_key] == SelectConstent::BID_FEE_FREE):
+        		         	$show = nl2br($list['bid_fee_value']).'%';
+        		         elseif ($c_key=='bid_fee' && $list[$c_key] == SelectConstent::BID_FEE_QITA):
+        		         	$show = nl2br($list['bid_fee_value']);
+        		         elseif ($c_key=='bid_fee_sort' && $list[$c_key] == SelectConstent::BID_FEE_QITA):
+        		         	$show = nl2br($list['bid_fee_sort_other']);
+        		         else:
+        		         	$show = nl2br($list[$c_key]);
+        		         endif;
+
+        		         if ($c_key=='tender_fee' && $list['currency'] == SelectConstent::BID_FEE_QITA):
+        		         	$show = $show.nl2br($list['other_currency']);
+        		         elseif ($c_key=='tender_fee'):
+        		         	$show = $show.nl2br($list['currency']);
+        		         endif;
+        		         
+        		         if ($c_key=='bid_fee' && $list['currency_bid_fee'] == SelectConstent::BID_FEE_QITA):
+        		         	$show = $show.'('.nl2br($list['other_currency_bid_fee']).')';
+        		         elseif ($c_key=='bid_fee'):
+        		         	$show = $show.'('.nl2br($list['currency_bid_fee']).')';
+        		         endif;
+        		         
+        		         if ($c_key=='bid_bond' && $list['currency_bid_bond'] == SelectConstent::BID_FEE_QITA):
+        		         	$show = $show.nl2br($list['other_currency_bid_fee']);
+        		         elseif ($c_key=='bid_bond'):
+        		         	$show = $show.nl2br($list['currency_bid_bond']);
+        		         endif;
+        		         ?>
+        		         
         		        <td class="fixed_css_<?php echo $c_key;?>"  width='<?php echo SelectConstent::getTHClassHeadersWidth($c_key); ?>px'>
-        		        <?php if($c_key=='bid_fee' && $list[$c_key] == SelectConstent::BID_FEE_FREE):?>
-        		        	<?php echo nl2br($list['bid_fee_value']).'%'; ?>
-        		        <?php elseif($c_key=='bid_fee' && $list[$c_key] == SelectConstent::BID_FEE_QITA):?>
-        		        	<?php echo nl2br($list['bid_fee_value']); ?>
-        		        <?php elseif($c_key=='currency' && $list[$c_key] == SelectConstent::BID_FEE_QITA):?>
-        		        	<?php echo nl2br($list['other_currency']); ?>
-        		        <?php elseif($c_key=='bid_fee_sort' && $list[$c_key] == SelectConstent::BID_FEE_QITA):?>
-        		        	<?php echo nl2br($list['bid_fee_sort_other']); ?>
-        		        <?php else:?>
-        		        	<?php echo nl2br($list[$c_key]); ?>
-        		        <?php endif;?>
+        		        	<?php echo $show; ?>
+        		        <?php ?>
         		        </td>
         		        <?php endforeach;?>
         		        </tr>
